@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         dice2 = findViewById(R.id.dice2)
         resultText = findViewById(R.id.resultText)
 
+        targetNumberInput = findViewById(R.id.targetNumber)
         rollButton.isEnabled = false
 
         rollButton.setOnClickListener {
@@ -61,8 +62,9 @@ class MainActivity : AppCompatActivity() {
         dice2.setImageResource(diceImages[dice2Value - 1])
 
         val sum = dice1Value + dice2Value
+        val targetNumber = targetNumberInput.text.toString().toIntOrNull() ?: return
 
-        if (dice1Value == dice2Value) {
+        if (sum == targetNumber) {
             resultText.text = "Félicitations ! Vous avez gagné !"
         } else {
             resultText.text = "Dommage ! Essayez encore (Somme: $sum)"
